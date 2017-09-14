@@ -1,0 +1,89 @@
+setopt no_share_history
+setopt interactivecomments
+
+# setting for ubuntu
+source /etc/zsh_command_not_found
+
+# z - jump around
+export _Z_DATA=~/.zsh/z/z
+
+# create parent directories on demand
+alias mkdir='mkdir -pv'
+
+# colorize diff output: install colordiff
+#alias diff='colordiff'
+
+# Make mount command output pretty and human readable format
+alias mount='mount | column -t'
+
+# alias list file
+alias l='ls -lah'
+alias la='ls -lAh'
+alias ll='ls -lh'
+alias ln='ln -i'
+alias ls='ls --color=tty'
+alias lsa='ls -lah'
+
+# confirmation
+alias mv='mv -i'
+alias cp='cp -i'
+alias ln='ln -i'
+alias rm='rm -I'
+
+
+ipaddr() {
+    #ifconfig | grep -B1 "inet addr" \
+        #| awk '{ if ( $1 == "inet" ) { print $2 } else if ( $2 == "Link" ) { printf "%s:" ,$1 } }' \
+        #| awk -F: '{ print $1 ": " $3 }' \
+        #| column -t
+    ip a |grep "inet "|awk '{print $2}' | awk -F/ '{print $1}' | sort
+}
+
+alias ipaddrpublic='curl http://ipecho.net/plain; echo'
+source /usr/share/autojump/autojump.zsh
+source /home/cuongnb/Angle/apps/autoenv.sh
+
+######################### PECO #############################
+#
+# Su dung peco giup tim kiem tren terminal de dang hon
+# http://kipalog.com/posts/ChWh1HmIok3AGrYnuc8TrQ
+#
+# src: https://github.com/peco/peco
+#
+function peco-select-history() {
+    local tac
+    if which tac > /dev/null; then
+        tac="tac"
+    else
+        tac="tail -r"
+    fi
+    BUFFER=$(\history -n 1 | \
+        eval $tac | \
+        awk '!_[$0]++' | \
+        peco --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle clear-screen
+}
+zle -N peco-select-history
+bindkey '^r' peco-select-history
+################ END PECO ###############################
+
+
+
+# alias for docker
+alias dcompose=docker-compose
+alias dstopall='docker stop `docker ps -aq`'
+alias dexec='docker exec -it'
+alias dstart='docker start'
+alias dlog='docker logs --tail==100'
+
+# alias for django
+alias pm='python3 manage.py'
+alias pmk="python3 manage.py makemigrations"
+alias pmm="python3 manage.py migrate"
+alias pmr="python3 manage.py runserver 0.0.0.0:8000"
+
+# other alias
+alias venv2='virtualenv -p /usr/bin/python2.7 venv && source ./venv/bin/activate'
+alias venv3='virtualenv -p /usr/bin/python3.5 venv && source ./venv/bin/activate'
+alias g=git
