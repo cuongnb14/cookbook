@@ -1,17 +1,20 @@
 #!/bin/bash
-# ls -1tr | head -n -10 | xargs -d '\n' rm -f --
+
 # Requirements :mysqldump (sudo apt-get install mysql-client)
 # Upzip file: gzip -d ${DIR_BACKUP}/${FILE_BACKUP}.sql.gz
+#
+# Add cronjob Every 1 hour
+# 0 * * * * /path/to/mysql_backup.sh
 # -----------------------------------------------------------
 
 MYSQL_HOST='127.0.0.1'
-MYSQL_PORT='3309'
+MYSQL_PORT='3306'
 
 MYSQL_USER='root'
-MYSQL_PASSWORD=dev@123
-MYSQL_DATABASE=plusfun
+MYSQL_PASSWORD=123456
+MYSQL_DATABASE=demo
 
-DIR_BACKUP='/home/cuongnb/tmp'
+DIR_BACKUP='/tmp'
 DATE_BACKUP=`date +%Y-%m-%d"_"%H-%M-%S`
 FILE_BACKUP=${MYSQL_DATABASE}_${DATE_BACKUP}
 
