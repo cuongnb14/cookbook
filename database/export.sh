@@ -4,7 +4,7 @@
 # Upzip file: gzip -d ${DIR_BACKUP}/${FILE_BACKUP}.sql.gz
 #
 # Add cronjob Every 1 hour
-# 0 * * * * /path/to/mysql_backup.sh
+# 0 * * * * /path/to/export.sh
 # -----------------------------------------------------------
 
 MYSQL_HOST='127.0.0.1'
@@ -20,7 +20,7 @@ FILE_BACKUP=${MYSQL_DATABASE}_${DATE_BACKUP}
 
 KEEP_NEWEST=3
 
-echo "Start backup..."
+echo "Start export..."
 mysqldump -h ${MYSQL_HOST} -P ${MYSQL_PORT} -u${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE} | gzip > ${DIR_BACKUP}/${FILE_BACKUP}.sql.gz
 
 echo "Remove old file"
