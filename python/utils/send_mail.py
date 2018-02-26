@@ -15,7 +15,7 @@ content = argv[2].replace("\\n", "\n")
 from_addr = 'demo@gmail.com'
 to_addrs  = argv[3]
 
-msg = 'Subject: {}\n\n{}'.format(subject, content)
+ msg = 'From: {}\nSubject: {}\n\n{}'.format(from_addr, subject, content)
 username = 'demo@gmail.com'
 password = 'passdemo'
 
