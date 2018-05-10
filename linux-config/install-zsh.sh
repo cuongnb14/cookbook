@@ -26,9 +26,13 @@ wget https://raw.githubusercontent.com/cuongnb14/cookbook/master/linux-config/.z
 echo "source ~/.zshrc_myconfig" >> ~/.zshrc
 
 # vim config
-echo "config vim"
+echo "add vim config"
 git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
 sh ~/.vim_runtime/install_awesome_vimrc.sh
+
+# git config
+echo "add gitconfig"
+wget https://raw.githubusercontent.com/cuongnb14/cookbook/master/linux-config/.gitconfig
 
 # Make ZSH the default shell
 # chsh -s $(which zsh)
