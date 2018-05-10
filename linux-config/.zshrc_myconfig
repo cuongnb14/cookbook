@@ -86,5 +86,5 @@ alias pmr="python3 manage.py runserver 0.0.0.0:8000"
 
 # other alias
 alias venv2='virtualenv -p /usr/bin/python2.7 venv && source ./venv/bin/activate'
-alias venv3='virtualenv -p /usr/bin/python3.5 venv && source ./venv/bin/activate'
+alias venv3='virtualenv -p /usr/bin/python3.6 venv && source ./venv/bin/activate'
 alias g=git

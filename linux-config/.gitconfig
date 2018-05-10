@@ -1,0 +1,16 @@
+[user]
+	email = cuongnb14@gmail.com
+	name = Cuong Nguyen
+[alias]
+	co = checkout
+	s = status
+	c = commit -m
+	a = add
+	d = diff
+	p = pull
+	l = log
+	ll = log --oneline
+	lg = log --graph
+	lga = log --graph --all
+[push]
+	default = matching
