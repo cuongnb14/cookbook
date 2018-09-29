@@ -1,5 +1,3 @@
-DISABLE_AUTO_TITLE="true"
-
 setopt no_share_history
 setopt interactivecomments
 
@@ -42,7 +40,6 @@ ipaddr() {
 }
 
 alias ipaddrpublic='curl http://ipecho.net/plain; echo'
-source /usr/share/autojump/autojump.zsh
 
 ######################### PECO #############################
 #
