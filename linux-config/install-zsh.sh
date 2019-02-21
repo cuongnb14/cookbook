@@ -30,5 +30,9 @@ sh ~/.vim_runtime/install_awesome_vimrc.sh
 echo "add gitconfig"
 wget https://raw.githubusercontent.com/cuongnb14/cookbook/master/linux-config/.gitconfig
 
+
+# autosuggestions
+cd ~/.oh-my-zsh/plugins && git clone https://github.com/zsh-users/zsh-autosuggestions.git
+
 # Make ZSH the default shell
 # chsh -s $(which zsh)
