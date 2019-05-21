@@ -21,3 +21,9 @@ sudo usermod -aG docker `whoami`
 
 # Install ctop
 sudo wget https://github.com/bcicen/ctop/releases/download/v0.6.0/ctop-0.6.0-linux-amd64 -O /usr/local/bin/ctop && sudo chmod +x /usr/local/bin/ctop
+
+
+# Install docker-compose
+sudo -i
+curl -L https://github.com/docker/compose/releases/download/1.24.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 
+chmod +x /usr/local/bin/docker-compose
