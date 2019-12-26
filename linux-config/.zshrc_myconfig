@@ -86,3 +86,6 @@ alias venv2='virtualenv -p /usr/bin/python2.7 venv && source ./venv/bin/activate
 alias venv3='virtualenv -p /usr/bin/python3.6 venv && source ./venv/bin/activate'
 alias g=git
 alias rzsh="source ~/.zshrc"
+
+alias sship='cat ~/.ssh/config | grep -A 2'
+
