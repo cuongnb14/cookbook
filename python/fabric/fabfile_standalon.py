@@ -55,13 +55,21 @@ sc = FabSlack()
 def deploy(c):
     logger.info("Deploying on {}".format(c.host))
     with c.cd(WORK_DIR):
+        # Create last commit id file if not exists
         if c.run('test -f {}'.format(LAST_CID_FILE), warn=True).failed:
             logger.info("Create {} file".format(LAST_CID_FILE))
             save_last_commit(c)
-        c.run('git pull')
+
+        do_deploy(c)
+
         notify_commit_applied(c)
         save_last_commit(c)
 
+
+def do_deploy(c):
+    c.run('git pull')
+    # c.run('docker-compose build demo')
+    # c.run('docker-compose up -d demo')
 
 # Utils functions
 # -----------------------------------------
