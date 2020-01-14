@@ -3,16 +3,7 @@
 fabfile template to deploy project to server
 
 - Requirements:
-    fabric==2.0.1
-    asn1crypto==0.24.0
-    bcrypt==3.1.4
-    cffi==1.11.5
-    cryptography==2.2.2
-    invoke==1.0.0
-    paramiko==2.4.1
-    pyasn1==0.4.3
-    pycparser==2.18
-    pynacl==1.2.1
+    fabric==2.5.0
 
     slackclient==1.2.1
     websocket-client==0.47.0
