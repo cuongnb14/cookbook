@@ -5,9 +5,6 @@ fabfile template to deploy project to server
 - Requirements:
     fabric==2.5.0
 
-    slackclient==1.2.1
-    websocket-client==0.47.0
-
 - Usage:
     fab -H my-server deploy
 
@@ -15,7 +12,6 @@ fabfile template to deploy project to server
 
 import traceback
 import logging
-from slackclient import SlackClient
 from invoke import task
 
 logging.basicConfig(level=logging.INFO)
@@ -25,30 +21,6 @@ WORK_DIR = '/deploy'
 
 # file storage last git commit id
 LAST_CID_FILE = "last_commit_id.txt"
-
-# Config slack for notification
-SLACK_API_KEY = "xxx-xxx-xxx"
-CHANNEL_NAME = "#random"
-
-
-class FabSlack:
-    sc = SlackClient(SLACK_API_KEY)
-
-    def send(self, **kargs):
-        try:
-            self.sc.api_call(
-                "chat.postMessage",
-                channel=CHANNEL_NAME,
-                username='Deployment',
-                # as_user=True,
-                icon_emoji=":gear:",
-                **kargs
-            )
-        except Exception:
-            traceback.print_exc()
-
-
-sc = FabSlack()
 
 
 @task
@@ -112,4 +84,5 @@ def notify_commit_applied(c):
             "text": commit_applied,
         },
     ]
-    sc.send(attachments=attachments, text="Deploy to *{}* success".format(c.host))
+    logger.info(commit_applied)
+    # sc.send(attachments=attachments, text="Deploy to *{}* success".format(c.host))
