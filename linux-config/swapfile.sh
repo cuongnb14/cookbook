@@ -1,4 +1,17 @@
-sudo fallocate -l 1G /swapfile
+# Script to create swapfile
+# Usage:
+# bash swapfile.sh [size]
+# 
+# size: size (GB) of swapfile, default = 1GB
+
+if [ $# -gt 0 ]
+then
+    SIZE=$1
+else
+    SIZE=1
+fi
+
+sudo fallocate -l ${SIZE}G /swapfile
 sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
